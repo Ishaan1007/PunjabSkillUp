@@ -10,7 +10,13 @@ export default function Navbar({ onSearch, query }) {
       <div className="container mx-auto px-6 flex items-center justify-between">
           <div className="flex items-center gap-4">
           <div className="flex items-center gap-2">
-            <img src={withBase('logo-symbol.svg')} alt="logo" className="w-12 h-12" />
+            <div className="w-12 h-12 overflow-hidden rounded-full">
+              <img
+                src={withBase('logo-symbol.svg')}
+                alt="logo"
+                className="w-full h-full object-cover object-center"
+              />
+            </div>
             <div className="text-2xl font-extrabold text-white">PunjabUpSkill</div>
           </div>
           <nav className="hidden md:flex items-center gap-3">
