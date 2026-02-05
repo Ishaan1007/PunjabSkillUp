@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function SearchBar({ onSearch }) {
+export default function SearchBar({ onSearch, value }) {
   return (
     <div className="relative">
       <div className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none">
@@ -11,6 +11,7 @@ export default function SearchBar({ onSearch }) {
       </div>
       <input
         aria-label="Search courses"
+        value={value}
         onChange={(e) => onSearch(e.target.value)}
         className="w-64 md:w-96 bg-gray-800/50 placeholder-gray-400 rounded-full py-2 pl-10 pr-4 focus:outline-none focus:ring-2 focus:ring-brand"
         placeholder="Search courses"

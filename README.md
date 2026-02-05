@@ -1,4 +1,4 @@
-# PunjabUpSkill — Frontend Demo
+# PunjabUpSkill - Frontend Demo
 
 React + Vite + Tailwind demo of a dark-themed course platform UI.
 
@@ -19,3 +19,4 @@ npm run dev
 Project structure: see `src/` for components, pages and local `data/` files.
 
 Deploy: build and host on GitHub Pages or static host (Vite build output).
+

@@ -2,6 +2,7 @@ import React from 'react'
 import { courses } from '../data/courses'
 import CourseRow from '../components/course/CourseRow'
 import { filterCourses } from '../utils/filterCourses'
+import { getYoutubeId } from '../utils/youtube'
 
 export default function AllCourses({ query }) {
   const filtered = filterCourses(courses, query)
@@ -10,8 +11,9 @@ export default function AllCourses({ query }) {
       <h1 className="text-2xl font-bold mb-4">All Courses</h1>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {filtered.map(c => {
-          const thumb = c.youtubeId ? `https://img.youtube.com/vi/${c.youtubeId}/hqdefault.jpg` : c.thumbnail
-          const href = c.youtubeId ? `https://www.youtube.com/watch?v=${c.youtubeId}` : null
+          const id = getYoutubeId(c.youtubeId)
+          const thumb = id ? `https://img.youtube.com/vi/${id}/hqdefault.jpg` : c.thumbnail
+          const href = id ? `https://www.youtube.com/watch?v=${id}` : null
           return (
             <div key={c.id} className="w-full">
               {href ? (

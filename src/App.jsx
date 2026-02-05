@@ -11,7 +11,7 @@ export default function App() {
 
   return (
     <div className="min-h-screen bg-gray-900 text-gray-100">
-      <Navbar onSearch={setQuery} />
+      <Navbar onSearch={setQuery} query={query} />
       <PageWrapper>
         <Routes>
           <Route path="/" element={<Home query={query} />} />
