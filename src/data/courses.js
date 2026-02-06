@@ -46,12 +46,12 @@ export const courses = [
   },
   {
     id: 6,
-    title: 'Bootstrap 5 Full Course',
+    title: 'Web Development By Dave Gray',
     category: 'Web Development',
     level: 'Beginner',
-    thumbnail: '/images/thumbnails/bootstrap.jpg',
-    youtubeId: 'https://youtu.be/qNifU_aQRio?si=oDpkyIO_LG3nLWG4',
-    type: 'video'
+    thumbnail: '/images/thumbnails/webdev-dave-gray.jpg',
+    playlistId: 'PL0Zuz27SZ-6M1Uopt6_VL3gf3cpMnwavm',
+    type: 'playlist'
   },
   {
     id: 7,
@@ -79,5 +79,41 @@ export const courses = [
     thumbnail: '/images/thumbnails/uiux.jpg',
     youtubeId: 'https://youtu.be/c9Wg6Cb_YlU?si=UjOso-F81oicG_Bv',
     type: 'video'
+  },
+  {
+    id: 10,
+    title: 'Python DSA Full Course',
+    category: 'DSA Courses',
+    level: 'Beginner to Advanced',
+    thumbnail: '/images/thumbnails/python-dsa.jpg',
+    youtubeId: 'https://youtu.be/QwSgyhSAJnc?si=kDwL4mn1viQ3B8KR',
+    type: 'video'
+  },
+  {
+    id: 11,
+    title: 'C++ DSA Full Course',
+    category: 'DSA Courses',
+    level: 'Beginner to Advanced',
+    thumbnail: '/images/thumbnails/cpp-dsa.jpg',
+    youtubeId: 'https://youtu.be/GRxzQXBwA-U?si=J0E3_GQ1nPNGVZR5',
+    type: 'video'
+  },
+  {
+    id: 12,
+    title: 'Vectors in C++',
+    category: 'C++',
+    level: 'Beginner',
+    thumbnail: '/images/thumbnails/cpp-vectors.jpg',
+    youtubeId: 'https://youtu.be/NWg38xWYzEg?si=Jvx0lTux1AHL4cyt',
+    type: 'video'
+  },
+  {
+    id: 13,
+    title: 'Web Development',
+    category: 'Node Js',
+    level: 'Beginner to Advanced',
+    thumbnail: '/images/thumbnails/node.jpg',
+    youtubeId: 'https://youtu.be/TlB_eWDSMt4?si=LLalBvjRbwj3uKQp',
+    type: 'playlist'
   }
 ]
