@@ -8,14 +8,16 @@ export default function Home({ query }) {
   const filtered = filterCourses(courses, query)
   const [playlistVideos, setPlaylistVideos] = useState({})
 
-  const playlists = useMemo(
-    () => filtered.filter(c => c.type === 'playlist'),
-    [filtered]
-  )
-  const videos = useMemo(
-    () => filtered.filter(c => c.type !== 'playlist'),
-    [filtered]
-  )
+  const playlists = useMemo(() => filtered.filter(c => c.type === 'playlist'), [filtered])
+  const videos = useMemo(() => filtered.filter(c => c.type !== 'playlist'), [filtered])
+
+  const categories = useMemo(() => {
+    const set = new Set()
+    for (const c of filtered) {
+      if (c.category) set.add(c.category)
+    }
+    return Array.from(set)
+  }, [filtered])
 
   useEffect(() => {
     let cancelled = false
@@ -38,8 +40,6 @@ export default function Home({ query }) {
   }, [playlists])
   return (
     <div>
-      <CourseRow title="Suggested" courses={videos} />
-
       {playlists.map(p => (
         <section key={p.id} className="my-6">
           <h2 className="text-lg sm:text-xl font-semibold mb-3">{p.title}</h2>
@@ -67,8 +67,13 @@ export default function Home({ query }) {
         </section>
       ))}
 
-      <CourseRow title="DSA Courses" courses={videos.filter(c => c.category === 'DSA')} />
-      <CourseRow title="Web Development Courses" courses={videos.filter(c => c.category === 'Web Development')} />
+      {categories.map(cat => (
+        <CourseRow
+          key={cat}
+          title={cat}
+          courses={videos.filter(c => c.category === cat)}
+        />
+      ))}
     </div>
   )
 }
