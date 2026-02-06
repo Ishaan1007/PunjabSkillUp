@@ -12,12 +12,14 @@ export default function Home({ query }) {
   const videos = useMemo(() => filtered.filter(c => c.type !== 'playlist'), [filtered])
 
   const categories = useMemo(() => {
-    const set = new Set()
-    for (const c of filtered) {
-      if (c.category) set.add(c.category)
+    const map = new Map()
+    for (const c of videos) {
+      if (!c.category) continue
+      if (!map.has(c.category)) map.set(c.category, [])
+      map.get(c.category).push(c)
     }
-    return Array.from(set)
-  }, [filtered])
+    return Array.from(map.entries())
+  }, [videos])
 
   useEffect(() => {
     let cancelled = false
@@ -40,11 +42,14 @@ export default function Home({ query }) {
   }, [playlists])
   return (
     <div>
-      {playlists.map(p => (
-        <section key={p.id} className="my-6">
-          <h2 className="text-lg sm:text-xl font-semibold mb-3">{p.title}</h2>
-          <div className="flex gap-3 sm:gap-4 overflow-x-auto py-2 scrollbar-hide">
-            {(playlistVideos[p.id] || []).map(v => (
+      {playlists.map(p => {
+        const items = playlistVideos[p.id] || []
+        if (items.length === 0) return null
+        return (
+          <section key={p.id} className="my-6">
+            <h2 className="text-lg sm:text-xl font-semibold mb-3">{p.title}</h2>
+            <div className="flex gap-3 sm:gap-4 overflow-x-auto py-2 scrollbar-hide">
+              {items.map(v => (
               <a
                 key={v.id}
                 href={`https://www.youtube.com/watch?v=${v.id}`}
@@ -62,16 +67,17 @@ export default function Home({ query }) {
                   </div>
                 </div>
               </a>
-            ))}
-          </div>
-        </section>
-      ))}
+              ))}
+            </div>
+          </section>
+        )
+      })}
 
-      {categories.map(cat => (
+      {categories.map(([cat, list]) => (
         <CourseRow
           key={cat}
           title={cat}
-          courses={videos.filter(c => c.category === cat)}
+          courses={list}
         />
       ))}
     </div>
